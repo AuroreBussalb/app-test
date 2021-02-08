@@ -12,4 +12,4 @@ data_file = str(config.pop('fif'))
 raw = mne.io.read_raw_fif(data_file, allow_maxshield=True)
 
 # Save file
-raw.save(raw.filenames[0].replace('.fif', 'test-raw.fif'))
+raw.save(raw.filenames[0].replace('.fif', 'test-raw.fif'), overwrite=True)
