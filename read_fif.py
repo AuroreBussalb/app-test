@@ -8,7 +8,7 @@ with open('config.json') as config_json:
     config = json.load(config_json)
 
 # Read the files
-data_file = str(config.pop('input_raw'))
+data_file = str(config.pop('fif))
 raw = mne.io.read_raw_fif(data_file, allow_maxshield=True)
 
 # Save file
