@@ -18,6 +18,5 @@ set -x
 mkdir -p out_dir
 
 # Run the actual python code
-singularity exec -e -B /network/lustre/iss01/cenir/analyse/meeg/BRAINLIFE/aurore/data_for_test docker://brainlife/mne:0.22.0 python3 read_fif.py .
-
-#singularity exec docker://brainlife/mne:0.22.0 python3 read_fif.py
+# singularity exec -e -B /network/lustre/iss01/cenir/analyse/meeg/BRAINLIFE/aurore/data_for_test docker://brainlife/mne:0.22.0 python3 read_fif.py .
+singularity exec docker://brainlife/mne:0.22.0 python3 read_fif.py
