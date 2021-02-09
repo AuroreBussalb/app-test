@@ -17,6 +17,18 @@ with open('config.json') as config_json:
 data_file = str(config.pop('fif'))
 raw = mne.io.read_raw_fif(data_file, allow_maxshield=True)
 
+# Test param
+test_param = config.pop('param_test')
+if test_param is not None:
+    destination_file = str(test_param)
+else:
+    dict_json_product['brainlife'].append({'type': 'warning', 'msg': "no param"})
+
+if test_param == "ok":
+    dict_json_product['brainlife'].append({'type': 'warning', 'msg': "ok"})
+elif test_param == "okay":
+    dict_json_product['brainlife'].append({'type': 'warning', 'msg': "okay"})
+
 # Save file
 # raw.save(raw.filenames[0].replace('.fif', 'test-raw.fif'), overwrite=True)
 
