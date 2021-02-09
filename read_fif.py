@@ -3,6 +3,12 @@
 import mne
 import json
 
+# Print mne version
+print(mne.__version__)
+
+# Generate a json.product to display messages on Brainlife UI
+dict_json_product = {'brainlife': []}
+
 # Load inputs from config.json
 with open('config.json') as config_json:
     config = json.load(config_json)
@@ -19,3 +25,10 @@ report = mne.Report(title='Rapport test', verbose=True)
 
 # Save report
 report.save('out_dir/report_maxfilter.html', overwrite=True)
+
+# Success message in product.json
+dict_json_product['brainlife'].append({'type': 'success', 'msg': 'MaxFilter was applied successfully.'})
+
+# Save the dict_json_product in a json file
+with open('product.json', 'w') as outfile:
+    json.dump(dict_json_product, outfile)
