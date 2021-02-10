@@ -41,11 +41,11 @@ raw_maxfilter = mne.preprocessing.maxwell_filter(raw,
 
 # Save file
 if config['param_st_duration'] is not None:
-    raw_maxfilter.save("out_dir/test-raw_tsss.fif)", overwrite=True)
+    raw_maxfilter.save("out_dir/test-raw_tsss.fif", overwrite=True)
     #raw_maxfilter.save("/network/lustre/iss01/home/aurore.bussalb/Repositories/app-maxfilter/data/test-raw_tsss.fif)",
                        # overwrite=True)
 else:
-    raw_maxfilter.save("out_dir/test-raw_sss.fif)", overwrite=True)
+    raw_maxfilter.save("out_dir/test-raw_sss.fif", overwrite=True)
     #raw_maxfilter.save("/network/lustre/iss01/home/aurore.bussalb/Repositories/app-maxfilter/data/test-raw_sss.fif)",
                        # overwrite=True)
 
