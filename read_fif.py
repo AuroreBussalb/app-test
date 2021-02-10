@@ -32,9 +32,9 @@ elif test_param == "okay":
 else:
     ValueError_message = f'Wrong parameter!'
     # Add message to product.json and write it before raising the exception
-    dict_json_product['brainlife'].append({'type': 'error', 'msg': ValueError_message})
-    with open('product.json', 'w') as outfile:
-        json.dump(dict_json_product, outfile)
+    # dict_json_product['brainlife'].append({'type': 'error', 'msg': ValueError_message})
+    # with open('product.json', 'w') as outfile:
+    #     json.dump(dict_json_product, outfile)
     # Raise exception
     raise ValueError(ValueError_message)
 
