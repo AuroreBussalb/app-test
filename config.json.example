@@ -1,5 +1,6 @@
 {
   "fif": "/network/lustre/iss01/home/aurore.bussalb/Repositories/app-maxfilter/data/rest1-raw.fif",
   "param_test": "",
-  "param_output_tag": "sss"
+  "param_st_duration": null,
+  "param_st_correlation": 0.98
 }
