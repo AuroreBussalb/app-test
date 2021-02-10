@@ -42,7 +42,7 @@ test = raw.filenames[0].replace('.fif', '_%s.fif' % config['param_output_tag'])
 # path = "/network/lustre/iss01/home/aurore.bussalb/Repositories/app-maxfilter/data/"
 path = "/out_dir/"
 path_fif = os.path.join(path, test)
-raw.save(str(path_fif), overwrite=True)
+raw.save(path_fif), overwrite=True)
 
 # Generate a report
 report = mne.Report(title='Rapport test', verbose=True)
