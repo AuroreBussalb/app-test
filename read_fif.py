@@ -25,24 +25,29 @@ if raw.info['bads'] is None:
     dict_json_product['brainlife'].append({'type': 'warning', 'msg': UserWarning_message})
 
 # Check if MaxFilter was already applied on the data
-sss_info = raw.info['proc_history'][0]['max_info']['sss_info']
-tsss_info = raw.info['proc_history'][0]['max_info']['max_st']
-if bool(sss_info) or bool(tsss_info) is True:
-    ValueError_message = f'You cannot apply MaxFilter if data have already ' \
-                     f'processed with Maxwell-filter.'
-    # Raise exception
-    raise ValueError(ValueError_message)
+# sss_info = raw.info['proc_history'][0]['max_info']['sss_info']
+# tsss_info = raw.info['proc_history'][0]['max_info']['max_st']
+# if bool(sss_info) or bool(tsss_info) is True:
+#     ValueError_message = f'You cannot apply MaxFilter if data have already ' \
+#                      f'processed with Maxwell-filter.'
+#     # Raise exception
+#     raise ValueError(ValueError_message)
 
 # Apply MaxFilter
 raw_maxfilter = mne.preprocessing.maxwell_filter(raw,
                                                  st_duration=config['param_st_duration'],
                                                  st_correlation=config['param_st_correlation'])
 
+
 # Save file
 if config['param_st_duration'] is not None:
     raw_maxfilter.save("out_dir/test-raw_tsss.fif)", overwrite=True)
+    #raw_maxfilter.save("/network/lustre/iss01/home/aurore.bussalb/Repositories/app-maxfilter/data/test-raw_tsss.fif)",
+                       # overwrite=True)
 else:
     raw_maxfilter.save("out_dir/test-raw_sss.fif)", overwrite=True)
+    #raw_maxfilter.save("/network/lustre/iss01/home/aurore.bussalb/Repositories/app-maxfilter/data/test-raw_sss.fif)",
+                       # overwrite=True)
 
 # Save file
 # raw.save(raw.filenames[0].replace('.fif', 'test-raw.fif'), overwrite=True)
