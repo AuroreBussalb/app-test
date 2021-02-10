@@ -2,6 +2,7 @@
 
 import mne
 import json
+import os
 
 # Print mne version
 print(mne.__version__)
@@ -37,7 +38,11 @@ raw = mne.io.read_raw_fif(data_file, allow_maxshield=True)
 # Save file
 # raw.save(raw.filenames[0].replace('.fif', 'test-raw.fif'), overwrite=True)
 # print(raw.filenames[0].replace('.fif', 'test-raw.fif'))
-raw.save("out_dir/test-raw.fif", overwrite=True)
+test = raw.filenames[0].replace('.fif', '_%s.fif' % config['param_output_tag'])
+# path = "/network/lustre/iss01/home/aurore.bussalb/Repositories/app-maxfilter/data/"
+path = "outir/"
+path_fif = os.path.join(path, test)
+raw.save(path_fif, overwrite=True)
 
 # Generate a report
 report = mne.Report(title='Rapport test', verbose=True)
