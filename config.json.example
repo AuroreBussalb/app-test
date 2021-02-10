@@ -1,3 +1,4 @@
 {
-  "fif": "/network/lustre/iss01/cenir/analyse/meeg/BRAINLIFE/aurore/data_for_test/rest1_bad_channels-raw.fif"
+  "fif": "/network/lustre/iss01/home/aurore.bussalb/Repositories/app-maxfilter/data/rest1-raw.fif",
+  "param_test": ""
 }
