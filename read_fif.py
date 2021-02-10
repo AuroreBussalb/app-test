@@ -40,7 +40,7 @@ raw = mne.io.read_raw_fif(data_file, allow_maxshield=True)
 # print(raw.filenames[0].replace('.fif', 'test-raw.fif'))
 test = raw.filenames[0].replace('.fif', '_%s.fif' % config['param_output_tag'])
 # path = "/network/lustre/iss01/home/aurore.bussalb/Repositories/app-maxfilter/data/"
-path = "outir/"
+path = "out_dir/"
 path_fif = os.path.join(path, test)
 raw.save(path_fif, overwrite=True)
 
