@@ -58,8 +58,9 @@ raw = mne.io.read_raw_fif(data_file, allow_maxshield=True)
 #     dict_json_product['brainlife'].append({'type': 'warning', 'msg': UserWarning_message})
 
 # Check if MaxFilter was already applied on the data
-sss_info = raw.info['proc_history'][0]['max_info']['sss_info']
-tsss_info = raw.info['proc_history'][0]['max_info']['max_st']
+sss_info = raw.info['proc_history']
+# sss_info = raw.info['proc_history'][0]['max_info']['sss_info']
+# tsss_info = raw.info['proc_history'][0]['max_info']['max_st']
 # if bool(sss_info) or bool(tsss_info) is True:
 #     ValueError_message = f'You cannot apply MaxFilter if data have already ' \
 #                      f'processed with Maxwell-filter.'
