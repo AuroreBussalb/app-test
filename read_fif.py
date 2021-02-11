@@ -48,7 +48,7 @@ with open('config.json') as config_json:
 # Read the files
 data_file = str(config.pop('fif'))
 raw = mne.io.read_raw_fif(data_file, allow_maxshield=True)
-
+print(raw.info.keys())
 # Warning if bad channels are empty
 # if raw.info['bads'] is None:
 #     UserWarning_message = f'No channels are marked as bad. ' \
