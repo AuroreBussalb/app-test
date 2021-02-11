@@ -59,6 +59,7 @@ raw = mne.io.read_raw_fif(data_file, allow_maxshield=True)
 
 # Check if MaxFilter was already applied on the data
 sss_info = raw.info['proc_history']
+print(sss_info)
 # sss_info = raw.info['proc_history'][0]['max_info']['sss_info']
 # tsss_info = raw.info['proc_history'][0]['max_info']['max_st']
 # if bool(sss_info) or bool(tsss_info) is True:
