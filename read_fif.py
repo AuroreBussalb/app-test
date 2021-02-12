@@ -15,7 +15,7 @@ with open('config.json') as config_json:
 # test cHPI
 
 # Get cHPI
-data_file = str(config.pop('input_raw'))
+data_file = str(config.pop('fif'))
 raw = mne.io.read_raw_fif(data_file, allow_maxshield=True)  # raw file must contain cHPI info
 chpi_amplitudes = mne.chpi.compute_chpi_amplitudes(raw, **config['params_chpi_amplitudes'])
 chpi_locs = mne.chpi.compute_chpi_locs(raw.info, chpi_amplitudes, **config['params_chpi_locs'])
