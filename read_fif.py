@@ -5,6 +5,10 @@ import json
 import numpy as np
 import warnings
 
+import json
+import mne
+import warnings
+
 # Generate a json.product to display messages on Brainlife UI
 dict_json_product = {'brainlife': []}
 
@@ -12,17 +16,83 @@ dict_json_product = {'brainlife': []}
 with open('config.json') as config_json:
     config = json.load(config_json)
 
-# test cHPI
+# Read the files
+data_file = config.pop('fif')
+raw = mne.io.read_raw_fif(data_file, allow_maxshield=True)
 
-# Get cHPI
-data_file = str(config.pop('fif'))
-raw = mne.io.read_raw_fif(data_file, allow_maxshield=True)  # raw file must contain cHPI info
-chpi_amplitudes = mne.chpi.compute_chpi_amplitudes(raw)
-chpi_locs = mne.chpi.compute_chpi_locs(raw.info, chpi_amplitudes)
-head_pos = mne.chpi.compute_head_pos(raw.info, chpi_locs)
+# Read the calibration files
+if 'cross_talk_correction' in config.keys():
+    cross_talk_file = config.pop('cross_talk_correction')
+else:
+    cross_talk_file = None
+
+if 'calibration' in config.keys():
+    calibration_file = config.pop('calibration')
+else:
+    calibration_file = None
+
+# Read the run to realign all runs
+if 'destination' in config.keys():
+    destination_file = config.pop('destination')
+else:
+    destination_file = None
+
+# Head pos file
+if 'head_position' in config.keys():
+    head_pos_file = config.pop('head_position')
+    head_pos_file = mne.chpi.read_head_pos(head_pos_file)
+else:
+    head_pos_file = None
+
+# Warning if bad channels are empty
+if raw.info['bads'] is None:
+    UserWarning_message = f'No channels are marked as bad. ' \
+                      f'Make sure to check (automatically or visually) for bad channels before ' \
+                      f'running MaxFilter.'
+    warnings.warn(UserWarning_message)
+    dict_json_product['brainlife'].append({'type': 'warning', 'msg': UserWarning_message})
+
+# Check if MaxFilter was already applied on the data
+if raw.info['proc_history']:
+    sss_info = raw.info['proc_history'][0]['max_info']['sss_info']
+    tsss_info = raw.info['proc_history'][0]['max_info']['max_st']
+    if bool(sss_info) or bool(tsss_info) is True:
+        ValueError_message = f'You cannot apply MaxFilter if data have already ' \
+                         f'processed with Maxwell-filter.'
+        # Raise exception
+        raise ValueError(ValueError_message)
+
+# Apply MaxFilter
+raw_maxfilter = mne.preprocessing.maxwell_filter(raw, calibration=calibration_file, cross_talk=cross_talk_file,
+                                                 head_pos=head_pos_file, destination=destination_file,
+                                                 st_duration=config['param_st_duration'],
+                                                 st_correlation=config['param_st_correlation'])
 
 # Save file
-mne.chpi.write_head_pos("out_dir/head_pos.pos", head_pos)
+if config['param_st_duration'] is not None:
+    raw_maxfilter.save("out_dir/test-raw_tsss.fif", overwrite=True)
+else:
+    raw_maxfilter.save("out_dir/test-raw_sss.fif", overwrite=True)
+
+
+# # Generate a json.product to display messages on Brainlife UI
+# dict_json_product = {'brainlife': []}
+#
+# # Load inputs from config.json
+# with open('config.json') as config_json:
+#     config = json.load(config_json)
+#
+# # test cHPI
+#
+# # Get cHPI
+# data_file = str(config.pop('fif'))
+# raw = mne.io.read_raw_fif(data_file, allow_maxshield=True)  # raw file must contain cHPI info
+# chpi_amplitudes = mne.chpi.compute_chpi_amplitudes(raw)
+# chpi_locs = mne.chpi.compute_chpi_locs(raw.info, chpi_amplitudes)
+# head_pos = mne.chpi.compute_head_pos(raw.info, chpi_locs)
+#
+# # Save file
+# mne.chpi.write_head_pos("out_dir/head_pos.pos", head_pos)
 
 # # Read all raw files and store them in a list
 # keys = list(config.keys())
