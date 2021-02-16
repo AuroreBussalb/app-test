@@ -16,6 +16,7 @@ set -x
 
 # Make output directory
 mkdir -p out_dir
+mkdir -p out_dir_fif
 
 # Run the actual python code
 # singularity exec -e -B /network/lustre/iss01/cenir/analyse/meeg/BRAINLIFE/aurore/data_for_test docker://brainlife/mne:0.22.0 python3 read_fif.py .
