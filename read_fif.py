@@ -18,6 +18,8 @@ head_pos = mne.chpi.compute_head_pos(raw.info, chpi_locs)
 # Save file
 mne.chpi.write_head_pos("out_dir_maxfilter/head_pos.pos", head_pos)
 
+raw.save("out_dir_maxfilter/test-raw_head_pos.fif", overwrite=True)
+
 # Success message in product.json
 dict_json_product['brainlife'].append({'type': 'success',
                                        'msg': 'head position file was written successfully.'})
