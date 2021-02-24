@@ -3,6 +3,7 @@
 import json
 import mne
 import warnings
+import matplotlib.pyplot as plt
 
 # Generate a json.product to display messages on Brainlife UI
 dict_json_product = {'brainlife': []}
@@ -62,7 +63,8 @@ if raw.info['proc_history']:
 raw_maxfilter = mne.preprocessing.maxwell_filter(raw, calibration=calibration_file, cross_talk=cross_talk_file,
                                                  head_pos=head_pos_file, destination=destination_file,
                                                  st_duration=config['param_st_duration'],
-                                                 st_correlation=config['param_st_correlation'])
+                                                 st_correlation=config['param_st_correlation'],
+                                                 skip_by_annotation=config['param_skip_by_annotation'])
 
 # Save file
 if config['param_st_duration'] is not None:
