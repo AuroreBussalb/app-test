@@ -19,4 +19,4 @@ mkdir -p out_dir_maxfilter
 mkdir -p out_dir_report
 
 # Run the actual python code
-singularity exec docker://brainlife/mne:0.22.0 python3 maxfilter.py
+singularity exec docker://brainlife/mne:0.22.0 python3 read_fif.py
