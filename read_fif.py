@@ -16,7 +16,7 @@ chpi_locs = mne.chpi.compute_chpi_locs(raw.info, chpi_amplitudes)
 head_pos = mne.chpi.compute_head_pos(raw.info, chpi_locs)
 
 # Save file
-mne.chpi.write_head_pos("out_dir/head_pos.pos", head_pos)
+mne.chpi.write_head_pos("out_dir_head_pos/head_pos.pos", head_pos)
 
 # Success message in product.json
 dict_json_product['brainlife'].append({'type': 'success',
