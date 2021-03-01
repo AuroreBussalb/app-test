@@ -15,7 +15,7 @@ set -e
 set -x
 
 # Make output directories
-mkdir -p out_dir_head_pos
+mkdir -p out_dir
 
 # Run the actual python code
 singularity exec docker://brainlife/mne:0.22.0 python3 read_fif.py
