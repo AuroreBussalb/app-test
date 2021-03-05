@@ -11,8 +11,11 @@ with open('config.json') as config_json:
 data_file = str(config.pop('fif'))
 raw = mne.io.read_raw_fif(data_file, allow_maxshield=True)
 
+test = data_file = str(config.pop('_inputs'))
+print(test)
+
 # Save file
-raw.save("out_dir/test-raw.fif", overwrite=True)
+raw.save("test-raw.fif", overwrite=True)
 
 # Success message in product.json
 dict_json_product['brainlife'].append({'type': 'success',
