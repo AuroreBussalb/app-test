@@ -8,13 +8,18 @@ dict_json_product = {'brainlife': []}
 with open('config.json') as config_json:
     config = json.load(config_json)
 
-data_file = str(config.pop('fif'))
-raw = mne.io.read_raw_fif(data_file, allow_maxshield=True)
+data_file = config.pop('fif')
 
-print(raw.info['events'])
+# Read events
+events, events_id = mne.read_events(data_file)
+print(events_id)
+
+# Read file
+# raw = mne.io.read_raw_fif(data_file, allow_maxshield=True)
+
 
 # Save file
-raw.save("test-raw.fif", overwrite=True)
+# raw.save("test-raw.fif", overwrite=True)
 
 # Success message in product.json
 dict_json_product['brainlife'].append({'type': 'success',
