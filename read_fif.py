@@ -11,7 +11,7 @@ with open('config.json') as config_json:
 data_file = str(config.pop('fif'))
 raw = mne.io.read_raw_fif(data_file, allow_maxshield=True)
 
-print(raw.info)
+print(raw.info['events'])
 
 # Save file
 raw.save("test-raw.fif", overwrite=True)
