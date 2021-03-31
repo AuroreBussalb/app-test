@@ -103,3 +103,7 @@ def main():
     # Save the dict_json_product in a json file
     with open('product.json', 'w') as outfile:
         json.dump(dict_json_product, outfile)
+
+
+if __name__ == '__main__':
+    main()
