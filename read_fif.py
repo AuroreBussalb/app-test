@@ -13,4 +13,4 @@ with open('config.json') as config_json:
 tmp = dict((k, None) for k, v in config.items() if v == "")
 config.update(tmp)
 
-print(type(config['list_of_integers'][0]))
+print(config['list_of_integers'][0])
