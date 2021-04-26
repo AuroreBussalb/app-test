@@ -14,6 +14,7 @@ tmp = dict((k, None) for k, v in config.items() if v == "")
 config.update(tmp)
 
 picks = config['list_of_integers']
+print(picks)
 if isinstance(picks, str) and picks.find("[") != -1 and picks is not None:
     picks = picks.replace('[', '')
     picks = picks.replace(']', '')
