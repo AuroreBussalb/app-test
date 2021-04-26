@@ -19,5 +19,5 @@ if isinstance(picks, str) and picks.find("[") != -1 and picks is not None:
     picks = picks.replace(']', '')
     picks = picks.replace("'", '')
     config['list_of_integers'] = list(map(str, picks.split(', ')))
-print(list_of_integers)
-print(list_of_integers[0])
+print(config['list_of_integers'])
+print(config['list_of_integers'][0])
