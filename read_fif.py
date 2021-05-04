@@ -5,12 +5,13 @@ import numpy as np
 import json
 import os
 import shutil
+import pandas as pd
+import mne_bids
 
 # Load inputs from config.json
 with open('config.json') as config_json:
     config = json.load(config_json)
 
-# Read ctf file
 data_file = config.pop('ds')
 raw_ctf = mne.io.read_raw_ctf(data_file)
 raw_ctf.save('test_raw.fif')

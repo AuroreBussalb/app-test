@@ -14,6 +14,8 @@
 set -e
 set -x
 
+bl2bids
+
 # Make output directories
 mkdir -p out_dir
 
