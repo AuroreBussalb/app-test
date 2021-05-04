@@ -20,4 +20,4 @@ bl2bids
 mkdir -p out_dir
 
 # Run the actual python code
-singularity exec docker://brainlife/mne:0.22.0 python3 read_fif.py
+singularity exec docker://brainlife/mne:0.22.0 python3 test.py
