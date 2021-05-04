@@ -7,6 +7,7 @@ import os
 import shutil
 import pandas as pd
 
+
 # Load inputs from config.json
 with open('config.json') as config_json:
     config = json.load(config_json)
