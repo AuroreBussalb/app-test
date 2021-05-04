@@ -12,9 +12,11 @@ import pandas as pd
 with open('config.json') as config_json:
     config = json.load(config_json)
 
-data_file = config.pop('ds')
-raw_ctf = mne.io.read_raw(data_file)
-raw_ctf.save('test_raw.fif')
+print('yeeeah')
+
+# data_file = config.pop('ds')
+# raw_ctf = mne.io.read_raw(data_file)
+# raw_ctf.save('test_raw.fif')
 
 # list_keys = list(config['reject'].keys())
 # list_keys = [k[:-1] for k in list_keys] 
