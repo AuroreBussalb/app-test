@@ -6,7 +6,6 @@ import json
 import os
 import shutil
 import pandas as pd
-import mne_bids
 
 # Load inputs from config.json
 with open('config.json') as config_json:
