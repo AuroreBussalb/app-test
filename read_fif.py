@@ -13,7 +13,7 @@ with open('config.json') as config_json:
     config = json.load(config_json)
 
 data_file = config.pop('ds')
-raw_ctf = mne.io.read_raw_ctf(data_file)
+raw_ctf = mne.io.read_raw(data_file)
 raw_ctf.save('test_raw.fif')
 
 # list_keys = list(config['reject'].keys())
