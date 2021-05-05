@@ -2,7 +2,7 @@
 
 import mne
 import json
-from mne_bids import read_raw_bids
+from mne_bids import BIDSPath, read_raw_bids
 
 
 # Load inputs from config.json
