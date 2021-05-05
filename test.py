@@ -10,7 +10,6 @@ with open('config.json') as config_json:
     config = json.load(config_json)
 
 # Read files from bids directory
-data_file = config.pop('ds')
 bids_path = BIDSPath(subject='0001',
                      session=None,
                      task='AEF',
@@ -24,5 +23,7 @@ bids_path = BIDSPath(subject='0001',
                      root='bids')
 
 raw_ctf = read_raw_bids(bids_path)
-raw_ctf.save('out_dir/test_raw.fif')
+
+# Save ctf file into fif
+raw_ctf.save('out_dir/test_raw.fif', overwrite=True)
 
