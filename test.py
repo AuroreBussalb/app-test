@@ -25,5 +25,5 @@ bids_path = BIDSPath(subject='0001',
 raw_ctf = read_raw_bids(bids_path)
 
 # Save ctf file into fif
-raw_ctf.save('out_dir/test_raw.fif', overwrite=True)
+raw_ctf.save('out_dir/meg.fif', overwrite=True)
 
