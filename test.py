@@ -9,6 +9,10 @@ from mne_bids import BIDSPath, read_raw_bids
 with open('config.json') as config_json:
     config = json.load(config_json)
 
+# Convert all "" into None when the App runs on BL 
+tmp = dict((k, None) for k, v in config.items() if v == "")
+config.update(tmp)
+
 # Read files from bids directory
 bids_path = BIDSPath(subject=config['subject'],
                      session=config['session'],
