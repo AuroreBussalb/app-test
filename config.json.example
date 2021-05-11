@@ -7,7 +7,5 @@
    "processing": null,
    "recording": null,
    "space": null,
-   "suffix": null,
-   "datatype": "meg",
-   "root": "bids"
+   "suffix": null
 }

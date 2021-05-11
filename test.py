@@ -19,8 +19,8 @@ bids_path = BIDSPath(subject=config['subject'],
                      recording=config['recording'],
                      space=config['space'],
                      suffix=config['suffix'],
-                     datatype=config['datatype'],
-                     root=config['root'])
+                     datatype='meg',
+                     root='bids')
 
 raw_ctf = read_raw_bids(bids_path)
 
