@@ -26,8 +26,8 @@ bids_path = BIDSPath(subject=config['subject'],
                      datatype='meg',
                      root='bids')
 
-raw_ctf = read_raw_bids(bids_path)
+# raw_ctf = read_raw_bids(bids_path)
 
-# Save ctf file into fif
-raw_ctf.save('out_dir/meg.fif', overwrite=True)
+# # Save ctf file into fif
+# raw_ctf.save('out_dir/meg.fif', overwrite=True)
 
