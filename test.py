@@ -10,17 +10,17 @@ with open('config.json') as config_json:
     config = json.load(config_json)
 
 # Read files from bids directory
-bids_path = BIDSPath(subject='0001',
-                     session=None,
-                     task='AEF',
-                     run='02',
-                     acquisition=None,
-                     processing=None,
-                     recording=None,
-                     space=None,
-                     suffix=None,
-                     datatype='meg',
-                     root='bids')
+bids_path = BIDSPath(subject=config['subject'],
+                     session=config['session'],
+                     task=config['task'],
+                     run=config['run'],
+                     acquisition=config['acquisition'],
+                     processing=config['processing'],
+                     recording=config['recording'],
+                     space=config['space'],
+                     suffix=config['suffix'],
+                     datatype=config['datatype'],
+                     root=config['root'])
 
 raw_ctf = read_raw_bids(bids_path)
 
