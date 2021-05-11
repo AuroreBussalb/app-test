@@ -2,6 +2,7 @@
    "subject": "0001",
    "session": null,
    "task": "AEF",
+   "run": "01",
    "acquisition": null,
    "processing": null,
    "recording": null,
