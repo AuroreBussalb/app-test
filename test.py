@@ -11,7 +11,7 @@ with open('config.json') as config_json:
 
 # Read ctf
 data_file = config.pop('ctf')
-raw = mne.io.read_raw(data_file, allow_maxshield=True)
+raw = mne.io.read_raw(data_file)
 
 # Save ctf file
 mean_tm_raw.save('out_dir/test.ctf', overwrite=True)
