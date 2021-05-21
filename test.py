@@ -10,11 +10,11 @@ with open('config.json') as config_json:
     config = json.load(config_json)
 
 # Read ctf
-data_file = config.pop('ctf')
-raw = mne.io.read_raw_ctf(data_file)
+data_file = config.pop('fif')
+raw = mne.io.read_raw_fif(data_file)
 
 # Save ctf file
-mean_tm_raw.save('out_dir/test.ctf', overwrite=True)
+raw.save('out_dir/test.fif', overwrite=True)
 
 
 # Read the raw file
