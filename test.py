@@ -11,7 +11,7 @@ with open('config.json') as config_json:
 
 # Read ctf
 data_file = config.pop('fif')
-raw = mne.io.read_raw_fif(data_file)
+raw = mne.io.read_raw_fif(data_file, allow_maxshield=True)
 
 # Save ctf file
 raw.save('out_dir/test.fif', overwrite=True)
