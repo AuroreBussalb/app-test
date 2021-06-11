@@ -2,6 +2,7 @@
 
 import mne
 import json
+import helper
 from mne_bids import BIDSPath, read_raw_bids
 
 
@@ -11,10 +12,13 @@ with open('config.json') as config_json:
 
 # Read ctf
 data_file = config.pop('fif')
+events = mne.read_events(data_file)
 raw = mne.io.read_raw_fif(data_file, allow_maxshield=True)
 
+print(events)
+
 # Save ctf file
-raw.save('out_dir/test.fif', overwrite=True)
+# raw.save('out_dir/test.fif', overwrite=True)
 
 
 # Read the raw file
