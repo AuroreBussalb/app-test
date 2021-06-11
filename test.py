@@ -2,7 +2,7 @@
 
 import mne
 import json
-import helper
+from brainlife_apps_helper import helper
 from mne_bids import BIDSPath, read_raw_bids
 
 
@@ -12,10 +12,11 @@ with open('config.json') as config_json:
 
 # Read ctf
 data_file = config.pop('fif')
-events = mne.read_events(data_file)
-raw = mne.io.read_raw_fif(data_file, allow_maxshield=True)
+#events = mne.read_events(data_file)
+#raw = mne.io.read_raw_fif(data_file, allow_maxshield=True)
 
-print(events)
+# Convert empty strings values to None
+config = helper.convert_parameters_to_None(config)
 
 # Save ctf file
 # raw.save('out_dir/test.fif', overwrite=True)

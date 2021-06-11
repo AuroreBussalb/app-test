@@ -1,11 +1,3 @@
 {
-   "subject": "0001",
-   "session": null,
-   "task": "AEF",
-   "run": "01",
-   "acquisition": null,
-   "processing": null,
-   "recording": null,
-   "space": null,
-   "suffix": null
+"fif": "/network/lustre/iss01/home/aurore.bussalb/Downloads/test.fif"
 }
